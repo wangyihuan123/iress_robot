@@ -7,6 +7,11 @@
 
 using namespace IressRobot;
 
+Table::Table() {
+    m_width = _table_default_dim;
+    m_height = _table_default_dim;
+}
+
 Table::Table(const int width, const int height)
         : m_width(width), m_height(height) {
     if (m_width <= 0)

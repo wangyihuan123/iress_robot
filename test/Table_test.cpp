@@ -8,10 +8,19 @@ using namespace IressRobot;
 
 // Test  the table constructiion with valid width and height
 TEST(TableTest, validConstruction) {
-    Table table(5, 6);
+    {
+        Table table;
+        EXPECT_EQ(5, table.get_width());
+        EXPECT_EQ(5, table.get_height());
+    }
 
-    EXPECT_EQ(5, table.getWidth());
-    EXPECT_EQ(6, table.getHeight());
+    {
+        Table table(1, 6);
+        EXPECT_EQ(1, table.get_width());
+        EXPECT_EQ(6, table.get_height());
+    }
+
+
 }
 
 // Test  table with invalid width and height
