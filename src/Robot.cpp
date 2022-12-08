@@ -86,9 +86,9 @@ bool Robot::move() {
 
 
 
-void Robot::right () {
+bool Robot::right () {
     //  check placed or not
-    if (false == m_active_flag) return;
+    if (false == m_active_flag) return false;
 
     // If performance matters, I can  use m_direction = (m_direction + 1) % 4;
     // overload enum class may be needed.
@@ -110,15 +110,17 @@ void Robot::right () {
         default:
             // throw
 //            cout << "Direction:" << static_cast<int>(m_direction) << endl;
-            abort();
+            return false;
     }
+
+    return true;
 }
 
 
-void Robot::left( )
+bool Robot::left( )
 {
     // check placed or not
-    if (false == m_active_flag) return;
+    if (false == m_active_flag) return false;
 
     // If performance matters, I can  use m_direction = (m_direction + 3) % 4;
     // overload enum class may be needed.
@@ -140,14 +142,17 @@ void Robot::left( )
         default:
             // throw
 //            cout << "Direction:" << static_cast<int>(m_direction) << endl;
-            abort();
+            return false;
     }
+    return true;
 }
 
+// todo: check placed or not??
 Position Robot::get_position() const {
     return m_position;
 }
 
+// todo: check placed or not??
 Direction Robot::get_direction() const {
     return m_direction;
 }

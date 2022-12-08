@@ -38,12 +38,11 @@ namespace IressRobot {
         [[nodiscard]] bool is_active() const;
         bool place(const Position& position, const Direction& direction);
         bool move();
-        bool rotate(const Turn turnDirection);
-        void right();
-        void left();
+        bool right();
+        bool left();
         Position get_position() const;
         Direction get_direction() const;
-        void report() ;
+//        void report() ;
     };
 
 }

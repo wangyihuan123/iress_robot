@@ -151,3 +151,54 @@ TEST(RobotTest, move_invalid_locations) {
         EXPECT_EQ(Direction::WEST, test_rob.get_direction());
     }
 }
+
+
+TEST(RobotTest, turn_left) {
+    std::shared_ptr<Table> test_table(new Table());
+    Robot test_rob(test_table);
+
+    {
+        // not placed yet
+        EXPECT_FALSE(test_rob.is_active());
+        EXPECT_FALSE(test_rob.left());
+        EXPECT_EQ(-1, test_rob.get_position().x);
+        EXPECT_EQ(-1, test_rob.get_position().y);
+        EXPECT_EQ(Direction::UNKNOWN, test_rob.get_direction());
+    }
+
+    {
+        EXPECT_TRUE(test_rob.place(Position{2, 2}, Direction::NORTH));
+        EXPECT_TRUE(test_rob.is_active());
+        EXPECT_TRUE(test_rob.left());
+        EXPECT_EQ(2, test_rob.get_position().x);
+        EXPECT_EQ(2, test_rob.get_position().y);
+        EXPECT_EQ(Direction::WEST, test_rob.get_direction());
+
+    }
+}
+
+
+
+TEST(RobotTest, turn_right) {
+    std::shared_ptr<Table> test_table(new Table());
+    Robot test_rob(test_table);
+
+    {
+        // not placed yet
+        EXPECT_FALSE(test_rob.is_active());
+        EXPECT_FALSE(test_rob.right());
+        EXPECT_EQ(-1, test_rob.get_position().x);
+        EXPECT_EQ(-1, test_rob.get_position().y);
+        EXPECT_EQ(Direction::UNKNOWN, test_rob.get_direction());
+    }
+
+    {
+        EXPECT_TRUE(test_rob.place(Position{2, 2}, Direction::NORTH));
+        EXPECT_TRUE(test_rob.is_active());
+        EXPECT_TRUE(test_rob.right());
+        EXPECT_EQ(2, test_rob.get_position().x);
+        EXPECT_EQ(2, test_rob.get_position().y);
+        EXPECT_EQ(Direction::EAST, test_rob.get_direction());
+
+    }
+}
