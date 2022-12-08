@@ -11,9 +11,10 @@ add_library(robot STATIC
         src/Table.cpp
         src/Robot.cpp
         src/Direction.cpp
+#        src/Parser.cpp
         )
 
-include_directories(${PROJECT_SOURCE_DIR}/include)
-add_executable(${PROJECT_NAME} main.cpp)
+include_directories(${PROJECT_SOURCE_DIR}/src)
+add_executable(${PROJECT_NAME} main.cpp )
 
 #target_link_libraries(MainProject LibProject)

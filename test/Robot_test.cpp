@@ -2,8 +2,8 @@
 // Created by ben on 8/12/22.
 //
 #include <gtest/gtest.h>
-#include "../include/Table.h"
-#include "../include/Robot.h"
+#include "../src/Table.h"
+#include "../src/Robot.h"
 
 using namespace IressRobot;
 

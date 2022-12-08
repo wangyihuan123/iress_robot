@@ -2,7 +2,7 @@
 // Created by ben on 6/12/22.
 //
 
-#include "../include/Table.h"
+#include "Table.h"
 #include <stdexcept>
 
 using namespace IressRobot;

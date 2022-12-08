@@ -29,7 +29,7 @@ namespace IressRobot {
         std::shared_ptr<Table> m_table{nullptr};
 
     public:
-        Robot() = delete; // todo: later
+        Robot() = delete; // todo: later register this robot to a table
         explicit Robot(std::shared_ptr<Table> table);
         Robot(Robot & robot) = delete;  // todo:
         Robot(Robot && robot) = delete;  // todo:

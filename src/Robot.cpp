@@ -2,8 +2,8 @@
 // Created by ben on 6/12/22.
 //
 
-#include "../include/Robot.h"
-#include "../include/Direction.h"
+#include "Robot.h"
+#include "Direction.h"
 
 using namespace IressRobot;
 using namespace std;

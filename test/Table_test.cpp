@@ -2,7 +2,7 @@
 // Created by ben on 7/12/22.
 //
 #include <gtest/gtest.h>
-#include "../include/Table.h"
+#include "../src/Table.h"
 
 using namespace IressRobot;
 
