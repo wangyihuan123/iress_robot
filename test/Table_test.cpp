@@ -7,7 +7,7 @@
 using namespace IressRobot;
 
 // Test  the table constructiion with valid width and height
-TEST(TableTest, validConstruction) {
+TEST(table_test, valid_construction) {
     {
         Table table;
         EXPECT_EQ(5, table.get_width());
@@ -24,7 +24,7 @@ TEST(TableTest, validConstruction) {
 }
 
 // Test  table with invalid width and height
-TEST(TableTest, InvalidConstruction) {
+TEST(table_test, invalid_construction) {
     EXPECT_THROW({ Table table(0, 5); }, std::invalid_argument);
     EXPECT_THROW({ Table table(5, 0); }, std::invalid_argument);
     EXPECT_THROW({ Table table(-1, 5); }, std::invalid_argument);
@@ -56,7 +56,7 @@ TEST(TableTest, InvalidConstruction) {
 
 
 // Test  valid locations on the table
-TEST(TableTest, validLocations) {
+TEST(table_test, valid_locations) {
     {
         Table table(5, 5);
 
@@ -79,7 +79,7 @@ TEST(TableTest, validLocations) {
 }
 
 // Test  invalid locations on the table
-TEST(TableTest, invalidLocations) {
+TEST(table_test, invalid_locations) {
     {
         Table table(5, 5);
 

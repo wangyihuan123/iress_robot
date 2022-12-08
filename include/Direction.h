@@ -18,6 +18,7 @@ namespace IressRobot {
         WEST = 3,
         MinDirection = NORTH,
         MaxDirection = WEST,
+        UNKNOWN = 4
     };
 
     const std::string directions[] = {"NORTH", "EAST", "SOUTH", "WEST"};

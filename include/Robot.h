@@ -23,10 +23,10 @@ namespace IressRobot {
     class Robot {
 
     private:
-        Position m_position {0, 0};
-        Direction m_direction{Direction::NORTH};
+        Position m_position {-1, -1};
+        Direction m_direction{Direction::UNKNOWN};
         bool m_active_flag {false};
-        std::shared_ptr<Table> m_table;
+        std::shared_ptr<Table> m_table{nullptr};
 
     public:
         Robot() = delete; // todo: later

@@ -23,12 +23,12 @@ bool Robot::is_active() const {
 
 
 bool Robot::place(const Position &position, const Direction &direction) {
-    if (!m_table) {
+    if (nullptr == m_table) {
         // todo: throw
 
     }
 
-    if (!m_table->is_valid_location(position.x, position.y)) {
+    if (false == m_table->is_valid_location(position.x, position.y)) {
         return false;
     }
 
@@ -46,7 +46,7 @@ bool Robot::place(const Position &position, const Direction &direction) {
 
 // todo: use hash table  instead of the switch later !!!
 bool Robot::move() {
-    if (!m_active_flag)
+    if (false == m_active_flag)
         return false;
 
 
@@ -74,7 +74,7 @@ bool Robot::move() {
     }
 
 
-    if (!m_table->is_valid_location(x, y))
+    if (false == m_table->is_valid_location(x, y))
         return false;
 
     m_position.x = x;
@@ -88,7 +88,7 @@ bool Robot::move() {
 
 void Robot::right () {
     //  check placed or not
-    if (!m_active_flag) return;
+    if (false == m_active_flag) return;
 
     // If performance matters, I can  use m_direction = (m_direction + 1) % 4;
     // overload enum class may be needed.
@@ -118,7 +118,7 @@ void Robot::right () {
 void Robot::left( )
 {
     // check placed or not
-    if (!m_active_flag) return;
+    if (false == m_active_flag) return;
 
     // If performance matters, I can  use m_direction = (m_direction + 3) % 4;
     // overload enum class may be needed.
@@ -163,13 +163,5 @@ Direction Robot::get_direction() const {
 //}
 //
 //
-//bool ToyRobot::rotate(const Direction::TurnDirection turnDirection) {
-//    if (!isPlaced()) {
-//        return false;
-//    }
-//
-//    m_direction.turn(turnDirection);
-//    return true;
-//}
-//
+
 
