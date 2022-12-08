@@ -9,6 +9,8 @@ add_subdirectory(test)
 
 add_library(robot STATIC
         src/Table.cpp
+        src/Robot.cpp
+        src/Direction.cpp
         )
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
