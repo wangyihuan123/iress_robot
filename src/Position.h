@@ -9,6 +9,9 @@ namespace IressRobot {
 
 // May need class implementation in the future, eg, operator== or private.
 // But now just use struct for simplicity.
+
+// todo: later combine position with direction
+// todo:  Position(coordinates, direction)
     struct Position {
         int x;
         int y;

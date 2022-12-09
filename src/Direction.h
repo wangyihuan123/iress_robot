@@ -21,20 +21,18 @@ namespace IressRobot {
         UNKNOWN = 4
     };
 
-    const std::string directions[] = {"NORTH", "EAST", "SOUTH", "WEST"};
 
-// todo:  class Direction
+// todo:  class Direction later
 
-
-
-//    std::string to_string(Direction direction);  // todo:
-//    Direction from_string(const std::string &input);  // todo:
+    std::string direction_to_string(Direction &direction);
+    Direction string_to_direction(const std::string &str);
     bool is_valid_direction(Direction direction);
 
 enum class Turn{
     LEFT,
     RIGHT
 };
+
 }
 
 
