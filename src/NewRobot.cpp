@@ -20,6 +20,11 @@ Robot::Robot(std::shared_ptr<Table> table) {
         throw;
     }
     m_table = table;   // use count ++
+
+    CommandFunctor command_function = [&](shared_ptr< Command >& command )mutable {
+        this->execute_command(command);
+    };
+    m_commandFunctor = command_function;
 }
 
 
@@ -51,4 +56,6 @@ Direction Robot::get_direction() const {
 void Robot::execute_command(std::shared_ptr<Command> &command)
 {
     command->Execute( m_position,  m_direction, m_table );
+
+    return;
 }

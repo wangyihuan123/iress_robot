@@ -22,6 +22,7 @@ using namespace  std;
 
 namespace IressRobot {
 
+    typedef std::function< void( std::shared_ptr< Command >& ) > CommandFunctor;
     class Robot {
 
     private:
@@ -30,6 +31,7 @@ namespace IressRobot {
 //        bool m_active_flag {false};  // can be detected by checking position and direction;
         shared_ptr<Table> m_table{nullptr};
 
+        CommandFunctor m_commandFunctor;
     public:
         Robot() = delete; // todo: later register this robot to a table
         explicit Robot(shared_ptr<Table> table);
@@ -40,6 +42,8 @@ namespace IressRobot {
         [[nodiscard]] bool is_active() const;
         Position get_position() const;
         Direction get_direction() const;
+
+        void get_command_functor();  // todo:
 
         void execute_command( shared_ptr< Command >& command );
 

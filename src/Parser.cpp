@@ -15,21 +15,21 @@
 using namespace IressRobot;
 using namespace std;
 
-Parser::Parser( CommandFunctor &functor) :
-        m_commandFunctor(functor) {
-}
+//Parser::Parser( CommandFunctor &functor) :
+//        m_commandFunctor(functor) {
+//}
 
-bool Parser::ParseInput(const string &input) {
-    if (nullptr == m_commandFunctor) {
-        return false;
-        // throw?
-    }
+std::shared_ptr<Command> Parser::ParseInput(const string &input) {
+//    if (nullptr == m_commandFunctor) {
+//        return nullptr;
+//        // todo: throw?
+//    }
 
     vector<string> commands;
     boost::split(commands, input, boost::is_any_of(" ,"), boost::algorithm::token_compress_on);
 
     if (true == commands.empty()) {
-        return false;
+        return nullptr;
     }
 
     string command = boost::to_upper_copy(commands.front());
@@ -42,20 +42,22 @@ bool Parser::ParseInput(const string &input) {
 
         Direction direction = IressRobot::string_to_direction(boost::to_upper_copy(commands.at(3)));
         if (direction == Direction::UNKNOWN)
-            return false;
+            return nullptr;
 
         Position position;
         try {
             position.x = boost::lexical_cast<int>(commands.at(1));
             position.y = boost::lexical_cast<int>(commands.at(2));
         } catch (boost::bad_lexical_cast & /*e*/ ) {
-            return false;
+            return nullptr;
         }
 
         try {
             std::shared_ptr< Command > cmd{ new Place_Command( position, direction ) };
+            return cmd;
+
         } catch (...) {
-            return false;
+            return nullptr;
         }
     } else if (command == "MOVE" && commands.size() == 1) {
 
@@ -66,11 +68,10 @@ bool Parser::ParseInput(const string &input) {
     } else if (command == "REPORT") {
 
     } else {
-        //could log invalid command
-        return false;
+        //anything else should be an invalid command
+        return nullptr;
     }
 
-    m_commandFunctor(cmd);
+//    m_commandFunctor(cmd);
 
-    return true;
 }

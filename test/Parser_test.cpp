@@ -29,7 +29,7 @@ TEST(parser_test, invalid_command) {
     CommandFunctor command_function = [&robot](shared_ptr< Command >& command )mutable {
         robot.execute_command(command);
     };
-    Parser parser = Parser( command_function );
+    Parser parser = Parser(  );
 
 //    EXPECT_FALSE(parser.ParseInput("invalid command"));
 //    EXPECT_FALSE(parser.ParseInput("PLACE"));
