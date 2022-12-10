@@ -3,11 +3,16 @@ project(iress)
 
 set(CMAKE_CXX_STANDARD 20)
 
+set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+set(CMAKE_CXX_FLAGS_DEBUG "-g")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
 include(GoogleTest)
+include (CTest)
 enable_testing()
 add_subdirectory(test)
 
-add_library(robot STATIC
+add_library(librobot STATIC
         src/Table.cpp
 #        src/Robot.cpp
         src/Parser.cpp
@@ -18,4 +23,6 @@ add_library(robot STATIC
 include_directories(${PROJECT_SOURCE_DIR}/src)
 add_executable(${PROJECT_NAME} main.cpp )
 
-#target_link_libraries(MainProject LibProject)
+target_link_libraries(${PROJECT_NAME}
+        librobot
+        pthread)
