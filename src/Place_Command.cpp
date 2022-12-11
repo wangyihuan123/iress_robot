@@ -3,7 +3,7 @@
 
 namespace IressRobot {
 
-    Place_Command::Place_Command(const Position &position, const Direction &direction): Command() {
+    Place_Command::Place_Command(const Position &position, const Direction &direction) : Command() {
 
         if (position.x < 0)
             throw std::invalid_argument("position.x");
@@ -18,12 +18,11 @@ namespace IressRobot {
         m_position.y = position.y;
     }
 
-    bool Place_Command::Execute( Position &position,
-                          Direction &direction,
-                          const std::shared_ptr<Table> &table) {
-        Position invalid_position{-1, -1};
+    bool Place_Command::Execute(Position &position,
+                                Direction &direction,
+                                const std::shared_ptr<Table> &table) {
 
-        if (false == table->is_valid_location(position.x, position.y))
+        if (false == table->is_valid_location(m_position.x, m_position.y))
             return false;
 
         position.x = m_position.x;
