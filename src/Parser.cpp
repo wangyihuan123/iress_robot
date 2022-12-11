@@ -11,6 +11,7 @@
 #include "Position.h"
 #include "Direction.h"
 #include "Place_Command.h"
+#include "Report_Command.h"
 
 using namespace IressRobot;
 using namespace std;
@@ -53,9 +54,7 @@ std::shared_ptr<Command> Parser::ParseInput(const string &input) {
         }
 
         try {
-            std::shared_ptr< Command > cmd{ new Place_Command( position, direction ) };
-            return cmd;
-
+            cmd  = make_shared<Place_Command>( position, direction ) ;
         } catch (...) {
             return nullptr;
         }
@@ -66,11 +65,17 @@ std::shared_ptr<Command> Parser::ParseInput(const string &input) {
     } else if (command == "RIGHT") {
 
     } else if (command == "REPORT") {
-
+        try {
+            cmd  = make_shared<Report_Command>();
+        } catch (...) {
+            return nullptr;
+        }
     } else {
         //anything else should be an invalid command
         return nullptr;
     }
+
+    return cmd;
 
 //    m_commandFunctor(cmd);
 

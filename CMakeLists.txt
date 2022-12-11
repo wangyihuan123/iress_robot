@@ -18,7 +18,8 @@ add_library(librobot STATIC
         src/Parser.cpp
         src/Direction.cpp
         src/NewRobot.cpp
-        src/Place_Command.cpp)
+        src/Place_Command.cpp
+        src/Report_Command.cpp)
 
 include_directories(${PROJECT_SOURCE_DIR}/src)
 add_executable(${PROJECT_NAME} main.cpp )

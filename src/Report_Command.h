@@ -1,5 +1,5 @@
-#ifndef IRESSROBOT_PLACE_COMMAND_H
-#define IRESSROBOT_PLACE_COMMAND_H
+#ifndef IRESSROBOT_REPORT_COMMAND_H
+#define IRESSROBOT_REPORT_COMMAND_H
 
 #include "Command.h"
 #include "Position.h"
@@ -9,19 +9,16 @@
 namespace IressRobot {
 //    class Table;
 
-    class Place_Command : public Command {
+    class Report_Command : public Command {
     public:
-        Place_Command(const Position& position, const Direction& direction );
+        Report_Command( );
 
-        virtual ~Place_Command() {};
+        virtual ~Report_Command() {};
 
         virtual bool Execute( Position &position,
                               Direction &direction,
                               const std::shared_ptr<Table> &table);
 
-    private:
-        Position m_position;
-        Direction m_direction;
     };
 }
 #endif
