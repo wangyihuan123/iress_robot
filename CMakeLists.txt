@@ -8,7 +8,7 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 include(GoogleTest)
-include (CTest)
+include(CTest)
 enable_testing()
 add_subdirectory(test)
 
@@ -18,10 +18,15 @@ add_library(librobot STATIC
         src/Direction.cpp
         src/Robot.cpp
         src/Place_Command.cpp
-        src/Report_Command.cpp src/Position.cpp src/Move_Command.cpp src/Move_Command.h)
+        src/Report_Command.cpp
+        src/Position.cpp
+        src/Move_Command.cpp
+        src/Left_Command.cpp
+        src/Right_Command.cpp
+        )
 
 include_directories(${PROJECT_SOURCE_DIR}/src)
-add_executable(${PROJECT_NAME} main.cpp )
+add_executable(${PROJECT_NAME} main.cpp)
 
 target_link_libraries(${PROJECT_NAME}
         librobot

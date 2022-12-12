@@ -1,9 +1,9 @@
 //
-// Created by ben on 12/12/22.
+// Created by ben on 13/12/22.
 //
 
-#ifndef IRESS_MOVE_COMMAND_H
-#define IRESS_MOVE_COMMAND_H
+#ifndef IRESS_RIGHT_COMMAND_H
+#define IRESS_RIGHT_COMMAND_H
 
 #include "Command.h"
 #include "Position.h"
@@ -13,11 +13,11 @@
 namespace IressRobot {
 //    class Table;
 
-    class Move_Command : public Command {
+    class Right_Command : public Command {
     public:
-        Move_Command() = default;
+        Right_Command() = default;
 
-        virtual ~Move_Command() {};
+        virtual ~Right_Command() {};
 
         virtual bool execute(Position &position,
                              Direction &direction,
@@ -26,4 +26,5 @@ namespace IressRobot {
     };
 }
 
-#endif //IRESS_MOVE_COMMAND_H
+
+#endif //IRESS_RIGHT_COMMAND_H

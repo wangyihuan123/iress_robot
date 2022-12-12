@@ -13,6 +13,8 @@
 #include "Place_Command.h"
 #include "Report_Command.h"
 #include "Move_Command.h"
+#include "Left_Command.h"
+#include "Right_Command.h"
 
 using namespace IressRobot;
 using namespace std;
@@ -55,9 +57,9 @@ std::shared_ptr<Command> Parser::ParseInput(const string &input) {
     } else if (command == "MOVE" && commands.size() == 1) {
         cmd  = make_shared<Move_Command>() ;
     } else if (command == "LEFT"&& commands.size() == 1) {
-
+        cmd  = make_shared<Left_Command>() ;
     } else if (command == "RIGHT"&& commands.size() == 1) {
-
+        cmd  = make_shared<Right_Command>() ;
     } else if (command == "REPORT"&& commands.size() == 1) {
         try {
             cmd  = make_shared<Report_Command>();
