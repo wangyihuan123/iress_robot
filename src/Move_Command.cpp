@@ -14,26 +14,28 @@ bool Move_Command::execute(Position &position,
     Position p(0, 0);
     switch (direction.get()) {
         case DirectionEnum::NORTH:
-            p.set_y(position.y() + 1);
+            p.set(position.x(), position.y() + 1);
             break;
         case DirectionEnum::EAST:
-            p.set_x(position.x() + 1);
+            p.set(position.x() + 1, position.y());
             break;
         case DirectionEnum::SOUTH:
-            p.set_y(position.y() - 1);
+            p.set(position.x(), position.y() - 1);
             break;
         case DirectionEnum::WEST:
-            p.set_x(position.x() - 1);
+            p.set(position.x() - 1, position.y());
             break;
         case DirectionEnum::UNKNOWN:
         default:
             return false;
     }
 
-    if (table->is_valid_location(p.x(), p.y()))
+    if (table->is_valid_location(p.x(), p.y())) {
         position = p;
+        return true;
+    }
 
-    return true;
+    return false;
 }
 
 
