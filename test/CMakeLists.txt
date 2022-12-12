@@ -3,7 +3,7 @@ project(iress_test)
 
 add_executable(${PROJECT_NAME}
         Table_test.cpp
-#        Robot_test.cpp
+        Robot_test.cpp
         Parser_test.cpp
         )
 

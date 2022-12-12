@@ -28,8 +28,7 @@ namespace IressRobot {
     private:
         Position m_position {-1, -1};
         Direction m_direction{DirectionEnum::UNKNOWN};
-//        bool m_active_flag {false};  // can be detected by checking position and direction;
-        shared_ptr<Table> m_table{nullptr};
+        shared_ptr<Table> m_table{nullptr};  // this should not be null after place
 
     public:
         Robot() = delete; // todo: later register this robot to a table
@@ -44,13 +43,6 @@ namespace IressRobot {
 
         void execute_command( shared_ptr< Command >& command );
 
-        // move all the actions to seperated command classes
-        // then all the actions will run by execute_command()
-//        bool place(const Position& position, const Direction& direction);
-//        bool move();
-//        bool right();
-//        bool left();
-//        void report() ;
     };
 
 }
