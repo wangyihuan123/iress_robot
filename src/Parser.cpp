@@ -33,10 +33,11 @@ std::shared_ptr<Command> Parser::ParseInput(const string &input) {
     // using "if/else if/else" for now
     if (command == "PLACE" && commands.size() == 4) {
 
-        Direction direction = IressRobot::string_to_direction(boost::to_upper_copy(commands.at(3)));
-        if (direction == Direction::UNKNOWN)
+        auto d = IressRobot::string_to_direction(boost::to_upper_copy(commands.at(3)));
+        if (d == DirectionEnum::UNKNOWN)
             return nullptr;
 
+        Direction direction(d);
         Position position;
         try {
             position.set_x(boost::lexical_cast<int>(commands.at(1)));

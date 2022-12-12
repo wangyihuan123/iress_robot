@@ -9,11 +9,13 @@ namespace IressRobot {
             throw std::invalid_argument("position");
 
 
-        if (false == is_valid_direction(direction))
+        if (false == direction.is_valid())
             throw std::invalid_argument("direction");
 
         m_position.set_x(position.x());
         m_position.set_y(position.y());
+
+        m_direction.set(direction.get());
     }
 
     bool Place_Command::execute(Position &position,

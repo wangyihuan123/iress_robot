@@ -11,7 +11,7 @@
 
 
 namespace IressRobot {
-    enum class Direction {
+    enum class DirectionEnum {
         NORTH = 0,
         EAST,
         SOUTH,
@@ -22,17 +22,33 @@ namespace IressRobot {
     };
 
 
-// todo:  class Direction later
+    class Direction {
 
-    std::string direction_to_string(Direction &direction);
-    Direction string_to_direction(const std::string &str);
+    public:
+
+        Direction();
+        explicit Direction(const DirectionEnum direction);
+        ~Direction() =default;
+
+        bool operator==(const Direction& direction) const;
+
+        [[nodiscard]] DirectionEnum get() const;
+        void set(const DirectionEnum direction);
+
+        std::string to_string() const;
+
+        bool is_valid() const;
+
+
+
+    private:
+        DirectionEnum m_direction;
+    };
+
+
+    std::string direction_to_string(Direction &direction);  // todo: delete later
+    DirectionEnum string_to_direction(const std::string &str);
     bool is_valid_direction(Direction direction);
-
-enum class Turn{
-    LEFT,
-    RIGHT
-};
-
 }
 
 

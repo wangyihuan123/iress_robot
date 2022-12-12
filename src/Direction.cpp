@@ -5,38 +5,83 @@
 #include "Direction.h"
 
 using namespace IressRobot;
-//const std::vector<std::string> Direction::m_allDirection = {"NORTH", "EAST", "SOUTH", "WEST"};
 
-bool IressRobot::is_valid_direction(Direction direction) {
-    return direction >= Direction::MinDirection && direction <= Direction::MaxDirection;
+Direction::Direction() : Direction(DirectionEnum::UNKNOWN)
+{
 }
 
- std::string IressRobot::direction_to_string(Direction &direction) {
-    switch (direction) {
-        case Direction::NORTH :
+Direction::Direction(const DirectionEnum direction) :
+        m_direction(direction)
+{
+
+}
+
+bool Direction::operator==(const Direction &direction) const
+{
+    return m_direction == direction.get();
+}
+
+DirectionEnum Direction::get() const
+{
+    return m_direction;
+}
+
+void Direction::set(const DirectionEnum dir)
+{
+    m_direction = dir;
+}
+
+bool Direction::is_valid() const
+{
+    return m_direction >= DirectionEnum::MinDirection && m_direction <= DirectionEnum::MaxDirection;
+}
+
+std::string Direction::to_string() const {
+    switch (m_direction) {
+        case DirectionEnum::NORTH :
             return "NORTH";
-        case Direction::EAST :
+        case DirectionEnum::EAST :
             return "EAST";
-        case Direction::SOUTH :
+        case DirectionEnum::SOUTH :
             return "SOUTH";
-        case Direction::WEST :
+        case DirectionEnum::WEST :
             return "WEST";
-        case Direction::UNKNOWN :
+        case DirectionEnum::UNKNOWN :
         default:
             return "UNKNOWN";
     }
 }
 
-Direction IressRobot::string_to_direction(const std::string &str) {
+bool is_valid_direction(const Direction& direction)  {
+    return direction.get() >= DirectionEnum::MinDirection && direction.get() <= DirectionEnum::MaxDirection;
+}
+
+ std::string IressRobot::direction_to_string(Direction &direction) {
+    switch (direction.get()) {
+        case DirectionEnum::NORTH :
+            return "NORTH";
+        case DirectionEnum::EAST :
+            return "EAST";
+        case DirectionEnum::SOUTH :
+            return "SOUTH";
+        case DirectionEnum::WEST :
+            return "WEST";
+        case DirectionEnum::UNKNOWN :
+        default:
+            return "UNKNOWN";
+    }
+}
+
+DirectionEnum IressRobot::string_to_direction(const std::string &str) {
     if (str == "NORTH")
-        return Direction::NORTH;
+        return DirectionEnum::NORTH;
     else if (str == "EAST")
-        return Direction::EAST;
+        return DirectionEnum::EAST;
     else if (str == "SOUTH")
-        return Direction::SOUTH;
+        return DirectionEnum::SOUTH;
     else if (str == "WEST")
-        return Direction::WEST;
+        return DirectionEnum::WEST;
     else
-        return Direction::UNKNOWN;
+        return DirectionEnum::UNKNOWN;
 
 }

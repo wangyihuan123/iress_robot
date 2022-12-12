@@ -45,27 +45,18 @@ TEST_F(Parser_test, invalid_place_command) {
 
 
 TEST_F(Parser_test, valid_place_command) {
-//    auto x = 1;
-//    auto y = 2;
     auto p = Position(1, 2);
-    auto d = Direction::NORTH;
+    auto d = Direction(DirectionEnum::NORTH);
     auto answer_cmd = Place_Command(p, d );
     shared_ptr<Command> cmd = parser.ParseInput("PLACE 1,2,NORTH");
 
     Place_Command * result_cmd = dynamic_cast<Place_Command *>(cmd.get());
     EXPECT_NE(result_cmd, nullptr);
     if (result_cmd) {
-        EXPECT_EQ(result_cmd->get_direction(), Direction::NORTH);
+        EXPECT_EQ(result_cmd->get_direction(), d);
         EXPECT_EQ(result_cmd->get_position(),  p);
     }
 
     EXPECT_EQ( result_cmd->get_direction(), answer_cmd.get_direction());
 }
 
-
-//TEST(parser_test, valid_place_command) {
-//    Parser parser = Parser(  );
-//
-//    auto cmd = Place_Command(Position{1,2}, Direction::NORTH);
-//    EXPECT_THAT(cmd , parser.ParseInput("PLACE 1,2,NORTHH"));
-//}
