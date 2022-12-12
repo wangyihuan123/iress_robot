@@ -12,9 +12,26 @@ namespace IressRobot {
 
 // todo: later combine position with direction
 // todo:  Position(coordinates, direction)
-    struct Position {
-        int x;
-        int y;
+    class Position
+    {
+    public:
+        Position();
+        Position(const int x, const int y);
+        ~Position();
+
+        bool operator==(const Position& position) const;
+
+        int x() const;
+        void set_x(const int x);
+
+        int y() const;
+        void set_y(const int y);
+
+        bool is_valid() const;
+
+    private:
+        int m_x;
+        int m_y;
     };
 }
 

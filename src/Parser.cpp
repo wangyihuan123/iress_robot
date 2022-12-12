@@ -39,8 +39,8 @@ std::shared_ptr<Command> Parser::ParseInput(const string &input) {
 
         Position position;
         try {
-            position.x = boost::lexical_cast<int>(commands.at(1));
-            position.y = boost::lexical_cast<int>(commands.at(2));
+            position.set_x(boost::lexical_cast<int>(commands.at(1)));
+            position.set_y(boost::lexical_cast<int>(commands.at(2)));
         } catch (boost::bad_lexical_cast & /*e*/ ) {
             return nullptr;
         }
