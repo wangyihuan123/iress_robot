@@ -28,14 +28,11 @@ Robot::Robot(std::shared_ptr<Table> table) {
 
 
 bool Robot::is_active() const {
-    if (
-            m_position.x > m_table->get_width() ||
-            m_position.x < 0 ||
-            m_position.y > m_table->get_height() ||
-            m_position.y < 0 ||
+    if (m_position.is_valid() == false ||
+            m_position.x() > m_table->get_width() ||
+            m_position.y() > m_table->get_height() ||
 
-            m_direction >  Direction::MaxDirection ||
-            m_direction < Direction::MinDirection
+            m_direction.is_valid() == false
     )
         return false;
     else

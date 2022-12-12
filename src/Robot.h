@@ -27,7 +27,7 @@ namespace IressRobot {
 
     private:
         Position m_position {-1, -1};
-        Direction m_direction{Direction::UNKNOWN};
+        Direction m_direction{DirectionEnum::UNKNOWN};
 //        bool m_active_flag {false};  // can be detected by checking position and direction;
         shared_ptr<Table> m_table{nullptr};
 
