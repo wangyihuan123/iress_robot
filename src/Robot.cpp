@@ -49,13 +49,15 @@ Direction Robot::get_direction() const {
     return m_direction;
 }
 
-void Robot::execute_command(std::shared_ptr<Command> &p_cmd)
+bool Robot::execute_command(std::shared_ptr<Command> &p_cmd)
 {
-    if (nullptr == p_cmd)
-        return;
+    if (nullptr == p_cmd)  // todo: should be check before
+        return false;
 
     if (false == p_cmd->execute( m_position,  m_direction, m_table )) {
         // todo: log the failure?
+        return false;
     }
 
+    return true;
 }

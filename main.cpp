@@ -18,27 +18,48 @@ using namespace IressRobot;
 using namespace std;
 
 int main(int argc, char **argv) {
-    std::shared_ptr<Table> table(new Table());
+    shared_ptr<Table> table(new Table());
     auto robot = Robot(table);
     Parser parser = Parser();
 
     // read commands from an input file
-    string filename = "/home/ben/CLionProjects/iress/test_input0.txt";
-    std::cout << "Reading Commands from file " << filename << "." << std::endl;
-    std::ifstream ifs; // input file stream
-    ifs.open(filename, std::ios::in);
+    if (argc < 2) {
+        cout << "Wait for the commands:" << endl;
 
-    if (ifs) {
+    } else {
+        string filename = argv[1];
+        cout << "Reading Commands from file " << filename << "." << endl;
+        ifstream ifs; // input file stream
+        ifs.open(filename, ios::in);
+
+        if (!ifs) {
+            cout << "Can't open file: " << filename << endl;
+            return 0;
+        }
+
         while (!ifs.eof()) {
-            std::string line;
-            std::getline(ifs, line);
-                std::cout << line << std::endl;
-            auto cmd = parser.ParseInput( line );
-            if (cmd)
-                robot.execute_command(cmd);
+            string line;
+            getline(ifs, line);
+            cout << line << endl;
+            auto cmd = parser.ParseInput(line);
+            if (cmd) {
+                auto result = robot.execute_command(cmd);
+                if (result)
+                    cout << "success." << endl;
+                else
+                    cout << "failed." << endl;
+
+            }else {
+                // debug
+//                cout << " parsing failed.";
+                cout << endl;
+            }
         }
         ifs.close();
+
+        return 0;
     }
+
 
     return 0;
 }

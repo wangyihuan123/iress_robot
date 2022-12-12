@@ -41,7 +41,7 @@ namespace IressRobot {
         [[nodiscard]] Position get_position() const;
         [[nodiscard]] Direction get_direction() const;
 
-        void execute_command( shared_ptr< Command >& command );
+        bool execute_command( shared_ptr< Command >& command );
 
     };
 
