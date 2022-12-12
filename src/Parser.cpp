@@ -12,6 +12,7 @@
 #include "Direction.h"
 #include "Place_Command.h"
 #include "Report_Command.h"
+#include "Move_Command.h"
 
 using namespace IressRobot;
 using namespace std;
@@ -29,8 +30,8 @@ std::shared_ptr<Command> Parser::ParseInput(const string &input) {
 
     shared_ptr<Command> cmd;
 
-    // todo: using enum class command for switch()
-    // using "if/else if/else" for now
+    // todo: can also using enum class command for switch()
+    // PLACE command has 4 args which is different with other commands
     if (command == "PLACE" && commands.size() == 4) {
 
         auto d = IressRobot::string_to_direction(boost::to_upper_copy(commands.at(3)));
@@ -52,12 +53,12 @@ std::shared_ptr<Command> Parser::ParseInput(const string &input) {
             return nullptr;
         }
     } else if (command == "MOVE" && commands.size() == 1) {
+        cmd  = make_shared<Move_Command>() ;
+    } else if (command == "LEFT"&& commands.size() == 1) {
 
-    } else if (command == "LEFT") {
+    } else if (command == "RIGHT"&& commands.size() == 1) {
 
-    } else if (command == "RIGHT") {
-
-    } else if (command == "REPORT") {
+    } else if (command == "REPORT"&& commands.size() == 1) {
         try {
             cmd  = make_shared<Report_Command>();
         } catch (...) {

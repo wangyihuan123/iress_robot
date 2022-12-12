@@ -18,7 +18,7 @@ add_library(librobot STATIC
         src/Direction.cpp
         src/Robot.cpp
         src/Place_Command.cpp
-        src/Report_Command.cpp src/Position.cpp)
+        src/Report_Command.cpp src/Position.cpp src/Move_Command.cpp src/Move_Command.h)
 
 include_directories(${PROJECT_SOURCE_DIR}/src)
 add_executable(${PROJECT_NAME} main.cpp )
