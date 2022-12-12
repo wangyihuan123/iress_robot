@@ -31,12 +31,13 @@ namespace IressRobot {
         shared_ptr<Table> m_table{nullptr};  // this should not be null after place
 
     public:
-        Robot() = delete; // todo: later register this robot to a table
+        Robot() = default; // todo: later register this robot to a table
         explicit Robot(shared_ptr<Table> table);
         Robot(Robot & robot) = delete;  // todo:
         Robot(Robot && robot) = delete;  // todo:
         ~Robot() = default;
 
+        bool register_table(shared_ptr<Table>);
         [[nodiscard]] bool is_active() const;
         [[nodiscard]] Position get_position() const;
         [[nodiscard]] Direction get_direction() const;

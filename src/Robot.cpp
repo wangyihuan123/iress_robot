@@ -20,12 +20,15 @@ Robot::Robot(std::shared_ptr<Table> table) {
         throw;
     }
     m_table = table;   // use count ++
-
-    CommandFunctor command_function = [&](shared_ptr< Command >& command )mutable {
-        this->execute_command(command);
-    };
 }
 
+bool Robot::register_table(shared_ptr<IressRobot::Table> table) {
+    if (nullptr == table)
+        return false;
+
+    m_table = table;
+    return true;
+}
 
 bool Robot::is_active() const {
     if (m_position.is_valid() == false ||
