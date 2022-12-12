@@ -16,15 +16,7 @@
 using namespace IressRobot;
 using namespace std;
 
-//Parser::Parser( CommandFunctor &functor) :
-//        m_commandFunctor(functor) {
-//}
-
 std::shared_ptr<Command> Parser::ParseInput(const string &input) {
-//    if (nullptr == m_commandFunctor) {
-//        return nullptr;
-//        // todo: throw?
-//    }
 
     vector<string> commands;
     boost::split(commands, input, boost::is_any_of(" ,"), boost::algorithm::token_compress_on);
@@ -76,7 +68,4 @@ std::shared_ptr<Command> Parser::ParseInput(const string &input) {
     }
 
     return cmd;
-
-//    m_commandFunctor(cmd);
-
 }

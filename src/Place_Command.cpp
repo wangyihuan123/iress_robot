@@ -18,7 +18,7 @@ namespace IressRobot {
         m_position.y = position.y;
     }
 
-    bool Place_Command::Execute(Position &position,
+    bool Place_Command::execute(Position &position,
                                 Direction &direction,
                                 const std::shared_ptr<Table> &table) {
 

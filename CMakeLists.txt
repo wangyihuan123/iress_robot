@@ -14,10 +14,9 @@ add_subdirectory(test)
 
 add_library(librobot STATIC
         src/Table.cpp
-#        src/Robot.cpp
         src/Parser.cpp
         src/Direction.cpp
-        src/NewRobot.cpp
+        src/Robot.cpp
         src/Place_Command.cpp
         src/Report_Command.cpp)
 

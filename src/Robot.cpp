@@ -1,4 +1,10 @@
 //
+// Created by ben on 9/12/22.
+//
+
+#include "Robot.h"
+
+//
 // Created by ben on 6/12/22.
 //
 
@@ -13,160 +19,46 @@ Robot::Robot(std::shared_ptr<Table> table) {
     if (nullptr == table) {
         throw;
     }
-    m_table = table; // use count ++
+    m_table = table;   // use count ++
+
+    CommandFunctor command_function = [&](shared_ptr< Command >& command )mutable {
+        this->execute_command(command);
+    };
 }
 
 
 bool Robot::is_active() const {
-    return m_active_flag;
-}
+    if (
+            m_position.x > m_table->get_width() ||
+            m_position.x < 0 ||
+            m_position.y > m_table->get_height() ||
+            m_position.y < 0 ||
 
-
-bool Robot::place(const Position &position, const Direction &direction) {
-    if (nullptr == m_table) {
-        // todo: throw
-
-    }
-
-    if (false == m_table->is_valid_location(position.x, position.y)) {
+            m_direction >  Direction::MaxDirection ||
+            m_direction < Direction::MinDirection
+    )
         return false;
-    }
-
-    if (!is_valid_direction(direction)) {
-        return false;
-    }
-
-    m_position.x = position.x;
-    m_position.y = position.y;
-    m_direction = direction;
-    m_active_flag = true;
-
-    return true;
+    else
+        return true;
 }
 
-// todo: use hash table  instead of the switch later !!!
-bool Robot::move() {
-    if (false == m_active_flag)
-        return false;
-
-
-    int x = m_position.x;
-    int y = m_position.y;
-
-    switch (m_direction) {
-        case Direction::NORTH:
-                y++;
-            break;
-        case Direction::SOUTH:
-                y--;
-            break;
-        case Direction::EAST:
-                x++;
-            break;
-        case Direction::WEST:
-                x--;
-            break;
-        default:
-            // throw
-//            cout << "Direction:" << static_cast<int>(m_direction) << endl;  // debug
-            abort();
-
-    }
-
-
-    if (false == m_table->is_valid_location(x, y))
-        return false;
-
-    m_position.x = x;
-    m_position.y = y;
-
-    return true;
-}
-
-
-
-
-bool Robot::right () {
-    //  check placed or not
-    if (false == m_active_flag) return false;
-
-    // If performance matters, I can  use m_direction = (m_direction + 1) % 4;
-    // overload enum class may be needed.
-    // But now, use switch statement for readable code
-    switch (m_direction)
-    {
-        case Direction::NORTH:
-            m_direction = Direction::EAST;
-            break;
-        case Direction::EAST:
-            m_direction = Direction::SOUTH;
-            break;
-        case Direction::SOUTH:
-            m_direction = Direction::WEST;
-            break;
-        case Direction::WEST:
-            m_direction = Direction::NORTH;
-            break;
-        default:
-            // throw
-//            cout << "Direction:" << static_cast<int>(m_direction) << endl;
-            return false;
-    }
-
-    return true;
-}
-
-
-bool Robot::left( )
-{
-    // check placed or not
-    if (false == m_active_flag) return false;
-
-    // If performance matters, I can  use m_direction = (m_direction + 3) % 4;
-    // overload enum class may be needed.
-    // But now, use switch statement for readable code
-    switch (m_direction)
-    {
-        case Direction::NORTH:
-            m_direction = Direction::WEST;
-            break;
-        case Direction::EAST:
-            m_direction = Direction::NORTH;
-            break;
-        case Direction::SOUTH:
-            m_direction = Direction::EAST;
-            break;
-        case Direction::WEST:
-            m_direction = Direction::SOUTH;
-            break;
-        default:
-            // throw
-//            cout << "Direction:" << static_cast<int>(m_direction) << endl;
-            return false;
-    }
-    return true;
-}
-
-// todo: check placed or not??
 Position Robot::get_position() const {
+// do not check active at the moment
     return m_position;
 }
 
-// todo: check placed or not??
 Direction Robot::get_direction() const {
+// do not check active at the moment
     return m_direction;
 }
 
+void Robot::execute_command(std::shared_ptr<Command> &p_cmd)
+{
+    if (nullptr == p_cmd)
+        return;
 
-//
-//void report() {
-//    assert(m_x <= 5 && m_x >= 0);
-//    assert(m_y <= 5 && m_y >= 0);
-//    assert(m_direction <= Direction::WEST && m_direction >= Direction::NORTH);
-//
-//    cout << "OUTPUT: " << m_x << "," << m_y << "," << directions[static_cast<int>(m_direction)] << endl;
-//}
-//
-//
+    if (false == p_cmd->execute( m_position,  m_direction, m_table )) {
+        // todo: log the failure?
+    }
 
-
+}

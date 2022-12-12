@@ -25,7 +25,7 @@ namespace IressRobot {
 
         virtual ~Command() =default;
 
-        virtual bool Execute( Position &position,
+        virtual bool execute( Position &position,
                               Direction &direction,
                               const std::shared_ptr<Table> &table) = 0;
     };

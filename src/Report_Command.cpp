@@ -11,7 +11,7 @@ namespace IressRobot
     Command()
 {}
 
-    bool Report_Command::Execute( Position &position,
+    bool Report_Command::EXPECT_EQ(nullptr, ( Position &position,
                   Direction &direction,
                   const std::shared_ptr<Table> &table)
 {

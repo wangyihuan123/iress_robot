@@ -15,10 +15,11 @@ namespace IressRobot {
 
         virtual ~Place_Command() {};
 
-        virtual bool Execute( Position &position,
+        virtual bool execute( Position &position,
                               Direction &direction,
                               const std::shared_ptr<Table> &table);
-
+        Position get_position(){return m_position;}
+        Direction get_direction() {return m_direction;}
     private:
         Position m_position;
         Direction m_direction;

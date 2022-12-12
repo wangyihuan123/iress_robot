@@ -12,18 +12,13 @@
 
 namespace IressRobot
 {
-//    typedef std::function< void( std::shared_ptr< Command >& ) > CommandFunctor;
-
     class Parser
     {
     public:
         Parser() = default;
-//        Parser(  CommandFunctor& functor );
 
         std::shared_ptr<Command> ParseInput( const std::string& input );
 
-    private:
-//        CommandFunctor m_commandFunctor;
     };
 }
 
