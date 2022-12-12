@@ -27,6 +27,8 @@ namespace IressRobot {
         int y() const;
         void set_y(const int y);
 
+        void set(const int x, const int y);
+
         bool is_valid() const;
 
     private:

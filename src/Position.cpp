@@ -45,6 +45,12 @@ void Position::set_y(const int y)
     m_y = y;
 }
 
+void Position::set(const int x, const int y)
+{
+    m_x = x;
+    m_y = y;
+}
+
 bool Position::is_valid() const
 {
     return m_x >= 0 && m_y >= 0;
