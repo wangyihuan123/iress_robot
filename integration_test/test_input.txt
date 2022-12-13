@@ -155,4 +155,4 @@ move
 right
 REPORT
 
-Expect: 2,4,NORTH, 2,3,WEST
+Expect: 2,4,NORTH; 2,3,WEST
