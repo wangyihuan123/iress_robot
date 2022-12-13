@@ -1,0 +1,131 @@
+a) Report while robot not exist
+REPORT
+
+Expect: -1,-1,UNKNOWN
+
+b) Place Invalid Direction
+PLACE 0,0,NORTHEAST
+REPORT
+
+Expect:
+
+c) Place out of the table
+PLACE 5,0,NORTH
+REPORT
+
+Expect: -1,-1,UNKNOWN
+
+d) Place Invalid Position Y
+PLACE 0,-1,NORTH
+REPORT
+
+Expect:
+
+e) Place Success
+PLACE 0,0,NORTH
+REPORT
+
+Expect: 0,0,NORTH
+
+f) Rotate Left
+PLACE 0,0,NORTH
+LEFT
+REPORT
+
+Expect: 0,0,WEST
+
+g) Rotate Left 2x
+PLACE 0,0,NORTH
+LEFT
+LEFT
+REPORT
+
+Expect: 0,0,SOUTH
+
+h) Rotate Left 3x
+PLACE 0,0,NORTH
+LEFT
+LEFT
+LEFT
+REPORT
+
+Expect: 0,0,EAST
+
+i) Rotate Left 4x
+PLACE 0,0,NORTH
+LEFT
+LEFT
+LEFT
+LEFT
+REPORT
+
+Expect: 0,0,NORTH
+
+j) Rotate Right
+PLACE 0,0,EAST
+RIGHT
+REPORT
+
+Expect: 0,0,SOUTH
+
+k) Rotate Right 2x
+PLACE 0,0,EAST
+RIGHT
+RIGHT
+REPORT
+
+Expect: 0,0,WEST
+
+l) Rotate Right 3x
+PLACE 0,0,EAST
+RIGHT
+RIGHT
+RIGHT
+REPORT
+
+Expect: 0,0,NORTH
+
+m) Rotate Right 4x
+PLACE 0,0,EAST
+RIGHT
+RIGHT
+RIGHT
+RIGHT
+REPORT
+
+Expect: 0,0,EAST
+
+n) Invalid Move
+PLACE 4,4,NORTH
+MOVE
+REPORT
+
+Expect: 4,4,NORTH
+
+o) Invalid then Valid Re-Place
+PLACE 5,0,NORTH
+PLACE 0,0,EAST
+REPORT
+
+Expect: 0,0,EAST
+
+p) Valid then Valid Re-Place
+PLACE 0,0,NORTH
+PLACE 3,4,EAST
+REPORT
+
+Expect: 3,4,EAST
+
+q) Valid then Valid Re-Place and Valid Move
+PLACE 0,0,NORTH
+PLACE 3,4,EAST
+MOVE
+REPORT
+
+Expect: 4,4,EAST
+
+r) report then report
+REPORT
+REPORT
+
+Expect: -1,-1,UNKNOWN
