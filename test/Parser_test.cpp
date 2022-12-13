@@ -2,8 +2,6 @@
 // Created by ben on 7/12/22.
 //
 #include <gtest/gtest.h>
-#include <gmock/gmock.h>
-
 
 #include <functional>
 #include "../src/Parser.h"
@@ -27,7 +25,7 @@ protected:
 
     // virtual void TearDown() {
     // }
-    Parser parser = Parser(  );
+    Parser parser ;
 };
 
 
@@ -40,9 +38,11 @@ TEST_F(Parser_test, invalid_place_command) {
     EXPECT_EQ(nullptr, parser.ParseInput("PLACE -1,-1,NORTH"));
     EXPECT_EQ(nullptr, parser.ParseInput("PLACE .1,.2,NORTH"));
     EXPECT_EQ(nullptr, parser.ParseInput("PLACE 1,2,NORTHH"));
+    EXPECT_EQ(nullptr, parser.ParseInput("PLACE 1,2,3,NORTH"));
+    EXPECT_EQ(nullptr, parser.ParseInput("PLACE 1,2,NORTH,WEST"));
+    EXPECT_EQ(nullptr, parser.ParseInput("PLACE 1,NORTH"));
+    EXPECT_EQ(nullptr, parser.ParseInput("PLACE 1,2"));
 }
-
-
 
 TEST_F(Parser_test, valid_place_command) {
     auto p = Position(1, 2);

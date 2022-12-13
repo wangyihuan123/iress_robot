@@ -67,29 +67,13 @@ TEST(Place_Command_Test, valid_constructions) {
 }
 
 
-//class Place_Command_Test : public testing::Test {
-//protected:
-//    void SetUp() override {
-//        // todo:
-//    }
-//
-//    // virtual void TearDown() {
-//    // }
-//
-////    Table table;
-//};
-
-
 TEST(Place_Command_Test, fail_execute) {
-
-    auto cmd = Place_Command(Position(0, 0), Direction(IressRobot::DirectionEnum::NORTH));
-    EXPECT_EQ(cmd.get_position().x(), 0);
-    EXPECT_EQ(cmd.get_position().y(), 0);
-
-    cmd = Place_Command(Position(123456789, 987654321),
-                        Direction(IressRobot::DirectionEnum::EAST));
+    Position pos(123456789, 987654321);
+    Direction dir(IressRobot::DirectionEnum::EAST);
+    auto cmd = Place_Command(pos, dir);
     EXPECT_EQ(cmd.get_position().x(), 123456789);
     EXPECT_EQ(cmd.get_position().y(), 987654321);
+    EXPECT_FALSE(cmd.execute(pos, dir, make_shared<Table>()));
 }
 
 TEST(Place_Command_Test, success_execute) {
