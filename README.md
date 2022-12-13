@@ -75,6 +75,7 @@ iress_robot
        ```
 
 3. Build
+
          ```
           git clone https://github.com/wangyihuan123/iress_robot.git
           cd iress_robot
@@ -93,9 +94,10 @@ iress_robot
    ```
    
     - start python simulator for integration test
+
    ```
-   cd integration_test
-   python3 simulator.py
+       cd integration_test
+       python3 simulator.py
    ```
 
 
@@ -114,8 +116,10 @@ unit_test
 ├── Robot_test.cpp  
 └── Table_test.cpp
 ```
-
-
+Unit test is based on google test framework.  To run the unit test:
+```
+./build/iress_test
+```
 
 2. integration test
 
@@ -129,12 +133,13 @@ unit_test
 ├── test_input_d.txt
 ├── test_input_e.txt
 ```
-
+To run  the app and test from file:
 ```
 ./iress test_input_a.txt
 ```
 
 #### input command from console input
+To run the app and test from console
 ```
 ./iress
 ```
@@ -147,7 +152,7 @@ unit_test
 │   └── test_input.txt
 ```
 
-
+To run the python simulator 
 ```
 cd ./integration_test
 python3 simulator.py
@@ -156,6 +161,7 @@ python3 simulator.py
 3.  dynamic test
 
 #### Valgrind
+I also check the programme with valgrind.
 
 ` sudo apt install valgrind`
  - Run example below and valgrind will generate the output in the file valgrind-out.txt
