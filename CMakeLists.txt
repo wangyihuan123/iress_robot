@@ -14,7 +14,7 @@ add_subdirectory(unit_test)
 
 add_library(librobot STATIC
         src/Table.cpp
-        src/Parser.cpp
+        src/Parser_Singleton.cpp
         src/Direction.cpp
         src/Robot.cpp
         src/Place_Command.cpp

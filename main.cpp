@@ -3,7 +3,7 @@
 //
 #include "src/Robot.h"
 #include "src/Table.h"
-#include "src/Parser.h"
+#include "src/Parser_Singleton.h"
 #include <functional>
 #include <fstream>
 #include <iostream>
@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
         // todo: eg.  table and parser can be singleton instance for simple scenario
         shared_ptr<Table> table(new Table());
         auto robot = Robot(table);
-        Parser parser = Parser();
+        Parser_Singleton * parser = Parser_Singleton::get_instance();
 
         string line;
 
@@ -41,7 +41,7 @@ int main(int argc, char **argv) {
             while (true) {
                 getline(cin, line);
 
-                auto cmd = parser.ParseInput(line);
+                auto cmd = parser->parse(line);
                 if (!cmd) {
                     break;
                 }
@@ -70,7 +70,7 @@ int main(int argc, char **argv) {
                 getline(ifs, line);
                 cout << line << endl;
 
-                auto cmd = parser.ParseInput(line);
+                auto cmd = parser->parse(line);
                 if (cmd) {
                     auto result = robot.execute_command(cmd);
                     if (result)
