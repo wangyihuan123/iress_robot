@@ -41,9 +41,13 @@ int main(int argc, char **argv) {
             while (true) {
                 getline(cin, line);
 
+                if (line.empty())
+                    break;
+
                 auto cmd = parser->parse(line);
                 if (!cmd) {
-                    break;
+                    cout << "<fail>" << endl;
+                    continue;
                 }
 
                 auto result = robot.execute_command(cmd);
