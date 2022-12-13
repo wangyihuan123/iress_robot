@@ -35,11 +35,8 @@ namespace IressRobot {
         [[nodiscard]] DirectionEnum get() const;
         void set(const DirectionEnum direction);
 
-        std::string to_string() const;
-
-        bool is_valid() const;
-
-
+        [[nodiscard]] std::string to_string() const;
+        [[nodiscard]] bool is_valid() const;
 
     private:
         DirectionEnum m_direction;

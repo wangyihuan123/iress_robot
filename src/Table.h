@@ -16,7 +16,7 @@ namespace  IressRobot {
         Table();
         // This constructor can throw an invalid_argument exception,
         // e.g.,  width and or height is negative integer
-        Table(int width,  int height);
+        explicit Table(int width,  int height);
 
         Table(const Table & table) = delete;
         Table(const Table && table) = delete;  // todo:

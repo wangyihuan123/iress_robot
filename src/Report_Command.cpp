@@ -7,10 +7,6 @@
 namespace IressRobot
 {
 
-    Report_Command::Report_Command() :
-    Command()
-{}
-
     bool Report_Command::execute( Position &position,
                   Direction &direction,
                   const std::shared_ptr<Table> &table)

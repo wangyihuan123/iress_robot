@@ -14,10 +14,6 @@
 #include "Table.h"
 #include "Command.h"
 
-// todo: check all the declaration later
-//class Position;
-//class Direction;
-
 using namespace  std;
 
 namespace IressRobot {

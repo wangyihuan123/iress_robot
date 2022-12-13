@@ -16,6 +16,7 @@ namespace IressRobot
     {
     public:
         Parser() = default;
+        ~Parser() = default;
 
         std::shared_ptr<Command> ParseInput( const std::string& input );
 

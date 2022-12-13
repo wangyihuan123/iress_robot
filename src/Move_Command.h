@@ -16,11 +16,11 @@ namespace IressRobot {
     public:
         Move_Command() = default;
 
-        virtual ~Move_Command() {};
+        ~Move_Command() override =default;
 
-        virtual bool execute(Position &position,
+        bool execute(Position &position,
                              Direction &direction,
-                             const std::shared_ptr<Table> &table);
+                             const std::shared_ptr<Table> &table) override;
 
     };
 }

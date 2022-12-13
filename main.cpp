@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
 
         if (argc < 2) {
             // read commands from console or other simulator process
-            cout << "Please use following commands to operate a robot on 5x5 table, and use enter to end." << endl;
+            cout << "Please use following commands to operate a robot on 5x5 table, and use newline(Enter) to end." << endl;
             cout << "PLACE x(0-4),y(0-4),direction(north/east/south/west)" << endl;
             cout << "MOVE" << endl;
             cout << "LEFT" << endl;
@@ -53,8 +53,9 @@ int main(int argc, char **argv) {
             }
 
         } else {
+
             // read commands from an input file
-            string filename = argv[1];
+            string filename = argv[1];  // todo: test more than one file at once
             cout << "Reading Commands from file [" << filename << "]." << endl;
             ifstream ifs; // input file stream
             ifs.open(filename, ios::in);
@@ -86,7 +87,7 @@ int main(int argc, char **argv) {
         }
     }
     catch (...) {
-        std::cerr << "Caught unknown exception" << std::endl;
+        std::cerr << "unknown error" << std::endl;
         return 1;
     }
 

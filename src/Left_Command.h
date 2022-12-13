@@ -17,11 +17,11 @@ namespace IressRobot {
     public:
         Left_Command() = default;
 
-        virtual ~Left_Command() {};
+        ~Left_Command() override = default;
 
-        virtual bool execute([[maybe_unused]]Position &position,
+        bool execute([[maybe_unused]]Position &position,
                              Direction &direction,
-                             [[maybe_unused]]const std::shared_ptr<Table> &table);
+                             [[maybe_unused]]const std::shared_ptr<Table> &table) override;
 
     };
 }

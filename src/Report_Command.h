@@ -2,22 +2,20 @@
 #define IRESSROBOT_REPORT_COMMAND_H
 
 #include "Command.h"
-#include "Position.h"
-#include "Direction.h"
-#include "Table.h"
 
 namespace IressRobot {
-//    class Table;
+    class Table;
+    class Position;
+    class Direction;
 
     class Report_Command : public Command {
     public:
-        Report_Command( );
+        Report_Command( ) = default;
+        ~Report_Command() override = default;
 
-        virtual ~Report_Command() {};
-
-        virtual bool execute( Position &position,
+        bool execute( Position &position,
                               Direction &direction,
-                              const std::shared_ptr<Table> &table);
+                              const std::shared_ptr<Table> &table) override;
 
     };
 }

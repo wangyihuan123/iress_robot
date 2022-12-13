@@ -17,19 +17,19 @@ namespace IressRobot {
     public:
         Position();
         Position(const int x, const int y);
-        ~Position();
+        ~Position() = default;
 
         bool operator==(const Position& position) const;
 
-        int x() const;
+        [[nodiscard]] int x() const;
         void set_x(const int x);
 
-        int y() const;
+        [[nodiscard]] int y() const;
         void set_y(const int y);
 
         void set(const int x, const int y);
 
-        bool is_valid() const;
+        [[nodiscard]] bool is_valid() const;
 
     private:
         int m_x;
