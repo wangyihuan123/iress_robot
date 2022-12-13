@@ -3,13 +3,15 @@
 //
 
 #include "Left_Command.h"
-#include "Table.h"
 
 using namespace IressRobot;
 
-bool Left_Command::execute(Position &position,
+bool Left_Command::execute([[maybe_unused]]Position &position,
                            Direction &direction,
-                           const std::shared_ptr<Table> &table) {
+                           [[maybe_unused]]const std::shared_ptr<Table> &table) {
+
+    // can also use int_direction = (int_direction + 3) % 4;
+    // but switch is more readable and easier
     switch (direction.get()) {
         case DirectionEnum::NORTH:
             direction.set(DirectionEnum::WEST);

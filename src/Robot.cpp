@@ -32,10 +32,9 @@ bool Robot::register_table(shared_ptr<IressRobot::Table> table) {
 
 bool Robot::is_active() const {
     if (m_position.is_valid() == false ||
+            m_direction.is_valid() == false ||
             m_position.x() > m_table->get_width() ||
-            m_position.y() > m_table->get_height() ||
-
-            m_direction.is_valid() == false
+            m_position.y() > m_table->get_height()
     )
         return false;
     else

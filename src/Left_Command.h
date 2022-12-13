@@ -7,12 +7,11 @@
 
 
 #include "Command.h"
-#include "Position.h"
-#include "Direction.h"
-#include "Table.h"
 
 namespace IressRobot {
-//    class Table;
+    class Position;
+    class Direction;
+    class Table;
 
     class Left_Command : public Command {
     public:
@@ -20,9 +19,9 @@ namespace IressRobot {
 
         virtual ~Left_Command() {};
 
-        virtual bool execute(Position &position,
+        virtual bool execute([[maybe_unused]]Position &position,
                              Direction &direction,
-                             const std::shared_ptr<Table> &table);
+                             [[maybe_unused]]const std::shared_ptr<Table> &table);
 
     };
 }

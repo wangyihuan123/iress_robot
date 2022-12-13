@@ -20,37 +20,36 @@ using namespace std;
 int main(int argc, char **argv) {
 
     try {
+        // todo: main function need to  refactoring later
+        // todo: eg.  table and parser can be singleton instance for simple scenario
         shared_ptr<Table> table(new Table());
         auto robot = Robot(table);
         Parser parser = Parser();
 
+        string line;
+
         if (argc < 2) {
-            // read commands from console or simulator
-            cout<<"Please use following commands to operate a robot on 5x5 table, and use enter to end."<<endl;
-            cout<<"PLACE x(0-4),y(0-4),direction(north/east/south/west)"<<endl;
-            cout<<"MOVE"<<endl;
-            cout<<"LEFT"<<endl;
-            cout<<"RIGHT"<<endl;
-            cout<<"REPORT"<<endl;
+            // read commands from console or other simulator process
+            cout << "Please use following commands to operate a robot on 5x5 table, and use enter to end." << endl;
+            cout << "PLACE x(0-4),y(0-4),direction(north/east/south/west)" << endl;
+            cout << "MOVE" << endl;
+            cout << "LEFT" << endl;
+            cout << "RIGHT" << endl;
+            cout << "REPORT" << endl;
             cout << "Wait for the commands..." << endl;
 
-            string line;
-            bool run_flag = true;
-            while(run_flag)
-            {
-                getline(cin,line);
-                auto cmd = parser.ParseInput(line);
-                if (cmd) {
-                    auto result = robot.execute_command(cmd);
-                    if (result){
-                        ;
-                    }
-                    else
-                        cout << "<fail>" << endl;
+            while (true) {
+                getline(cin, line);
 
-                } else {
-                    run_flag = false;
+                auto cmd = parser.ParseInput(line);
+                if (!cmd) {
+                    break;
                 }
+
+                auto result = robot.execute_command(cmd);
+                if (result) { ;  // succeed can be muted, otherwise too much string for console control
+                } else
+                    cout << "<fail>" << endl;
             }
 
         } else {
@@ -65,10 +64,11 @@ int main(int argc, char **argv) {
                 return 1;
             }
 
+            // read file line by line and process the command
             while (!ifs.eof()) {
-                string line;
                 getline(ifs, line);
                 cout << line << endl;
+
                 auto cmd = parser.ParseInput(line);
                 if (cmd) {
                     auto result = robot.execute_command(cmd);

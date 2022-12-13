@@ -22,7 +22,6 @@ using namespace  std;
 
 namespace IressRobot {
 
-    typedef std::function< void( std::shared_ptr< Command >& ) > CommandFunctor;
     class Robot {
 
     private:
@@ -38,7 +37,7 @@ namespace IressRobot {
         ~Robot() = default;
 
         bool register_table(shared_ptr<Table>);
-        [[nodiscard]] bool is_active() const;
+        [[nodiscard]] bool is_active() const;  // not very useful at the moment
         [[nodiscard]] Position get_position() const;
         [[nodiscard]] Direction get_direction() const;
 

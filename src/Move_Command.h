@@ -6,12 +6,11 @@
 #define IRESS_MOVE_COMMAND_H
 
 #include "Command.h"
-#include "Position.h"
-#include "Direction.h"
-#include "Table.h"
 
 namespace IressRobot {
-//    class Table;
+    class Table;
+    class Position;
+    class Direction;
 
     class Move_Command : public Command {
     public:

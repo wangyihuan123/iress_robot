@@ -3,13 +3,14 @@
 //
 
 #include "Right_Command.h"
-#include "Table.h"
 
 using namespace IressRobot;
 
-bool Right_Command::execute(Position &position,
+bool Right_Command::execute([[maybe_unused]]Position &position,
                            Direction &direction,
-                           const std::shared_ptr<Table> &table) {
+                            [[maybe_unused]]const std::shared_ptr<Table> &table) {
+    // can also use int_direction = (int_direction + 1) % 4;
+    // but switch is more readable and easier
     switch (direction.get()) {
         case DirectionEnum::NORTH:
             direction.set(DirectionEnum::EAST);
