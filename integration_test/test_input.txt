@@ -1,4 +1,4 @@
-a) Report while robot not exist
+a) Report while robot not place yet
 REPORT
 
 Expect: -1,-1,UNKNOWN
@@ -124,8 +124,35 @@ REPORT
 
 Expect: 4,4,EAST
 
-r) report then report
+r) Report then report
 REPORT
 REPORT
 
-Expect: -1,-1,UNKNOWN
+Expect: -1,-1,UNKNOWN;-1,-1,UNKNOWN
+
+
+s) Valid then report then move, then invalid move and turn then report
+PLACE 3,3,NORTH
+REPORT
+MOVE
+MOVE
+LEFT
+REPORT
+
+Expect: 3,3,NORTH;3,4,WEST
+
+
+t) random test
+PLACE 3,3,NORTH
+move
+left
+move
+right
+REPORT
+left
+left
+move
+right
+REPORT
+
+Expect: 2,4,NORTH, 2,3,WEST
