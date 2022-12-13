@@ -14,7 +14,7 @@ namespace IressRobot
     class Parser_Singleton
     {
     protected:
-        static Parser_Singleton* parser_singleton;
+        static std::shared_ptr<Parser_Singleton> parser_singleton;
         Parser_Singleton() = default;
 
     public:
@@ -22,7 +22,8 @@ namespace IressRobot
         void operator=(const Parser_Singleton &) = delete;
         ~Parser_Singleton() = default;
 
-        static Parser_Singleton *get_instance();
+        static std::shared_ptr<Parser_Singleton> get_instance();
+        static void reset_instance();
 
         std::shared_ptr<Command> parse( const std::string& input );
 

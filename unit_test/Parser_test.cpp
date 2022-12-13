@@ -25,7 +25,7 @@ protected:
 
     // virtual void TearDown() {
     // }
-    Parser_Singleton *parser  = Parser_Singleton::get_instance();
+    shared_ptr<Parser_Singleton> parser  = Parser_Singleton::get_instance();
 };
 
 

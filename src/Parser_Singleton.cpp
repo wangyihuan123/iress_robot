@@ -19,11 +19,11 @@
 using namespace IressRobot;
 using namespace std;
 
-Parser_Singleton *Parser_Singleton::parser_singleton = nullptr;
+shared_ptr<Parser_Singleton> Parser_Singleton::parser_singleton = nullptr;
 
-Parser_Singleton *Parser_Singleton::get_instance() {
+shared_ptr<Parser_Singleton> Parser_Singleton::get_instance() {
     if (parser_singleton == nullptr) {
-        parser_singleton = new Parser_Singleton();
+        parser_singleton = shared_ptr<Parser_Singleton>(new Parser_Singleton());
     }
     return parser_singleton;
 }

@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
         // todo: eg.  table and parser can be singleton instance for simple scenario
         shared_ptr<Table> table(new Table());
         auto robot = Robot(table);
-        Parser_Singleton * parser = Parser_Singleton::get_instance();
+        shared_ptr<Parser_Singleton>  parser = Parser_Singleton::get_instance();
 
         string line;
 
