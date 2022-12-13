@@ -10,7 +10,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 include(GoogleTest)
 include(CTest)
 enable_testing()
-add_subdirectory(test)
+add_subdirectory(unit_test)
 
 add_library(librobot STATIC
         src/Table.cpp
