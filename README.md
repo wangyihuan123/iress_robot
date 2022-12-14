@@ -116,9 +116,10 @@ unit_test
 ├── Robot_test.cpp  
 └── Table_test.cpp
 ```
-Unit test is based on google test framework.  To run the unit test:
+Unit test is based on google test framework. It doesn't cover all the code and all the scenario due to the time limit.
+To run the unit test:
 ```
-./build/iress_test
+./build/unit_test/iress_test
 ```
 
 2. integration test
@@ -135,13 +136,14 @@ Unit test is based on google test framework.  To run the unit test:
 ```
 To run  the app and test from file:
 ```
-./iress test_input_a.txt
+./build/iress test_input_a.txt
 ```
+Only one test file at a time at the moment. Reading multiple test files can be implemented later.
 
 #### input command from console input
 To run the app and test from console
 ```
-./iress
+./build/iress
 ```
 
 #### input command from another process
@@ -151,6 +153,9 @@ To run the app and test from console
 │   ├── test_input2.txt
 │   └── test_input.txt
 ```
+The python script reads test file `test_input.txt` and starts a subprocess for robot programme.
+I use pipe for simple  inter-process communication between python script client and  robot server.
+The script also checks the result and compares with the expected output in the test_input.txt.
 
 To run the python simulator 
 ```
@@ -172,6 +177,6 @@ valgrind --leak-check=full \
          --track-origins=yes \
          --verbose \
          --log-file=valgrind-out.txt \
-         ./build/iress ../test_input_e.txt
+         ./build/iress ./test_input_e.txt
    ```
 
